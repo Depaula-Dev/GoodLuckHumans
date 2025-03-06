@@ -27,6 +27,8 @@ class Menu:
                     self.menu_text(20, MENU_OPTION[i], COLOR_YELLOW , ((WIN_WIDTH/2), 200 + 25 * i))
                 else:
                     self.menu_text(20, MENU_OPTION[i], COLOR_WHITE , ((WIN_WIDTH/2), 200 + 25 * i))
+
+            pygame.display.flip()
             
             
         
@@ -52,7 +54,7 @@ class Menu:
                         return MENU_OPTION[menu_option]
 
             
-            pygame.display.flip()
+            
                     
 
     def menu_text(self, text_size: int, text: str, text_color: tuple, text_center_pos: tuple):
