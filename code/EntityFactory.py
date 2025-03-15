@@ -8,7 +8,7 @@ from code.const import WIN_HEIGHT, WIN_WIDTH
 class EntityFactory:
 
     @staticmethod
-    def get_entity(entity_name: str, position=(0, 0)):
+    def get_entity(entity_name: str):
         match entity_name:
             case 'Level1Bg':
                 list_bg = []

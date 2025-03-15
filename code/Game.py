@@ -1,3 +1,4 @@
+import sys
 import pygame
 from code.Level import Level
 from code.Menu import Menu
@@ -32,6 +33,7 @@ class Game:
                 pygame.quit()
                 quit()
             else:
-                pass
+                pygame.quit()
+                sys.exit()
             
 

@@ -2,7 +2,7 @@
 
 from code.EnemyShot import EnemyShot
 from code.Entity import Entity
-from code.const import ENTITY_SHOT_DELAY, ENTITY_SPEED, WIN_WIDTH
+from code.const import ENTITY_SHOT_DELAY, ENTITY_SPEED
 
 
 class Enemy(Entity):

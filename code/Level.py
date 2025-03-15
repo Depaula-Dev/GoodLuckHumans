@@ -13,7 +13,7 @@ from code.const import COLOR_CYAN, COLOR_GREEN, COLOR_WHITE, EVENT_ENEMY, EVENT_
 
 class Level:
 
-    def __init__(self, window: Surface, name: str, game_mode: str, player_score: list[int]):
+    def __init__(self, window:Surface, name:str, game_mode: str, player_score:list[int]):
         self.timeout = TIMEOUT_LEVEL 
         self.window = window
         self.name = name
