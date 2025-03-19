@@ -1,4 +1,3 @@
-from code.SatelliteShot import SatelliteShot
 from code.Alien import Alien
 from code.AlienShot import AlienShot
 from code.Satellite import Satellite
@@ -16,9 +15,6 @@ class EntityMediator:
         if isinstance(ent, AlienShot):
             if ent.rect.left >= WIN_WIDTH:
                 ent.health = 0
-        if isinstance(ent, SatelliteShot):
-            if ent.rect.right <= 0:
-                ent.health = 0
 
     @staticmethod
     def __verify_collision_entity(ent1, ent2):
@@ -27,45 +23,28 @@ class EntityMediator:
             valid_interection = True
         elif isinstance(ent1, AlienShot) and isinstance(ent2, Satellite):
             valid_interection = True
-        elif isinstance(ent1, Alien) and isinstance(ent2, SatelliteShot):
-            valid_interection = True
-        elif isinstance(ent1, SatelliteShot) and isinstance(ent2, Alien):
-            valid_interection = True
+        elif isinstance(ent1, Alien):
+            valid_interection = False
 
         if valid_interection: 
             if (ent1.rect.right >= ent2.rect.left and ent1.rect.left <= ent2.rect.right and
-                ent1.rect.bottom >= ent2.rect.top and ent1.rect.top <=ent2.rect.bottom):
+                ent1.rect.bottom >= ent2.rect.top and ent1.rect.top <= ent2.rect.bottom):
                 ent1.health -= ent2.damage
                 ent2.health -= ent1.damage
                 ent1.last_dmg = ent2.name
                 ent2.last_dmg = ent1.name
-    
-    @staticmethod
-    def __give_score(enemy: Satellite, entity_list: list[Entity]):
-        if enemy.last_dmg == 'Alien1Shot':
-            for ent in entity_list:
-                if ent.name == 'Alien1':
-                    ent.score += enemy.score
-        elif enemy.last_dmg == 'Alien2Shot':
-            for ent in entity_list:
-                if ent.name == 'Alien2':
-                    ent.score += enemy.score
-
-
 
     @staticmethod
-    def verify_collision(entity_list: list[Entity]):
-        for i in range(len(entity_list)):
-            entity1 = entity_list[i]
-            EntityMediator.__verify_collision_window(entity1)
-            for j in range(len(entity_list)):
-                entity2 = entity_list[j]
-                EntityMediator.__verify_collision_entity(entity1, entity2)
-
-    @staticmethod
-    def verify_health(entity_list: list[Entity]):
+    def verify_collision(entity_list):
+        """Itera sobre a lista de entidades e verifica colisões"""
         for ent in entity_list:
-            if ent.health <= 0:
-                if isinstance(ent, Satellite):
-                    EntityMediator.__give_score(ent, entity_list)
-                entity_list.remove(ent)
+            EntityMediator.__verify_collision_window(ent)
+
+        for i in range(len(entity_list)):
+            for j in range(i + 1, len(entity_list)):
+                EntityMediator.__verify_collision_entity(entity_list[i], entity_list[j])
+
+    @staticmethod
+    def verify_health(entity_list):
+        """Remove entidades cuja saúde chegou a zero"""
+        entity_list[:] = [ent for ent in entity_list if ent.health > 0]

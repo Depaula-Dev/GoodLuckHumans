@@ -1,6 +1,3 @@
-
-
-from code.SatelliteShot import SatelliteShot
 from code.Entity import Entity
 from code.Const import ENTITY_SHOT_DELAY, ENTITY_SPEED
 
