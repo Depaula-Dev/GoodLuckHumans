@@ -4,7 +4,7 @@ from pygame.font import Font
 import pygame
 from pygame import K_BACKSPACE, K_ESCAPE, K_RETURN, KEYDOWN, Rect, Surface
 from code.DBProxy import DBProxy
-from code.const import COLOR_WHITE, COLOR_YELLOW, MENU_OPTION, SCORE_POS
+from code.Const import COLOR_WHITE, COLOR_YELLOW, MENU_OPTION, SCORE_POS
 
 
 class Score:

@@ -1,8 +1,8 @@
 import random
-from code.Enemy import Enemy
-from code.Player import Player
+from code.Satellite import Satellite
+from code.Alien import Alien
 from code.Background import Background
-from code.const import WIN_HEIGHT, WIN_WIDTH
+from code.Const import WIN_HEIGHT, WIN_WIDTH
 
 
 class EntityFactory:
@@ -25,11 +25,11 @@ class EntityFactory:
                 return list_bg
             
             case 'Player1':
-                return Player('Player1', (10, WIN_HEIGHT/2 -30))
+                return Alien('Player1', (10, WIN_HEIGHT/2 -30))
             case 'Player2':
-                return Player('Player2', (10, WIN_HEIGHT/2 +30))
+                return Alien('Player2', (10, WIN_HEIGHT/2 +30))
             case 'Enemy1':
-                return Enemy('Enemy1', (WIN_WIDTH + 10, random.randint(40, WIN_HEIGHT - 40)))
+                return Satellite('Enemy1', (WIN_WIDTH + 10, random.randint(40, WIN_HEIGHT - 40)))
             case 'Enemy2':
-                return Enemy('Enemy2', (WIN_WIDTH + 10, random.randint(40, WIN_HEIGHT - 40)))
+                return Satellite('Enemy2', (WIN_WIDTH + 10, random.randint(40, WIN_HEIGHT - 40)))
             

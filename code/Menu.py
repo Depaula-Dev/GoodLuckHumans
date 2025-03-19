@@ -2,7 +2,7 @@ from tkinter.font import Font
 from pygame import Rect, Surface
 import pygame.image
 
-from code.const import COLOR_ORANGE, COLOR_YELLOW, MENU_OPTION, WIN_WIDTH, COLOR_WHITE
+from code.Const import COLOR_ORANGE, COLOR_YELLOW, MENU_OPTION, WIN_WIDTH, COLOR_WHITE
 
 
 class Menu:

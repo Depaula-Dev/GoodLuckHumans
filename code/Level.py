@@ -3,12 +3,12 @@ import sys
 import pygame
 from pygame import Surface, Rect
 from pygame.font import Font
-from code.Enemy import Enemy
+from code.Satellite import Satellite
 from code.Entity import Entity
 from code.EntityFactory import EntityFactory
 from code.EntityMediator import EntityMediator
-from code.Player import Player
-from code.const import COLOR_CYAN, COLOR_GREEN, COLOR_WHITE, EVENT_ENEMY, EVENT_TIMEOUT, MENU_OPTION, SPAWN_TIME, TIMEOUT_LEVEL, TIMEOUT_STEP, WIN_HEIGHT
+from code.Alien import Alien
+from code.Const import COLOR_CYAN, COLOR_GREEN, COLOR_WHITE, EVENT_ENEMY, EVENT_TIMEOUT, MENU_OPTION, SPAWN_TIME, TIMEOUT_LEVEL, TIMEOUT_STEP, WIN_HEIGHT
 
 
 class Level:
@@ -42,7 +42,7 @@ class Level:
             for ent in self.entity_list:
                 self.window.blit(source=ent.surf, dest=ent.rect) 
                 ent.move()
-                if isinstance(ent, (Player, Enemy)):
+                if isinstance(ent, (Alien, Satellite)):
                     shot = ent.shot()
                     if shot is not None:
                         self.entity_list.append(shot)
@@ -63,15 +63,15 @@ class Level:
                     self.timeout -= TIMEOUT_STEP
                     if self.timeout == 0:
                         for ent in self.entity_list:
-                            if isinstance(ent, Player) and ent.name == 'Player1':
+                            if isinstance(ent, Alien) and ent.name == 'Player1':
                                 player_score[0] = ent.score
-                            if isinstance(ent, Player) and ent.name == 'Player2':
+                            if isinstance(ent, Alien) and ent.name == 'Player2':
                                 player_score[1] = ent.score
                         return True
                     
                 found_player = False
                 for ent in self.entity_list:
-                    if isinstance(ent, Player):
+                    if isinstance(ent, Alien):
                         found_player = True
 
                 if not found_player:

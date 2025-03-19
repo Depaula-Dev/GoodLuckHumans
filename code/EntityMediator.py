@@ -1,19 +1,19 @@
 from code.EnemyShot import EnemyShot
-from code.Player import Player
-from code.PlayerShot import PlayerShot
-from code.Enemy import Enemy
+from code.Alien import Alien
+from code.AlienShot import AlienShot
+from code.Satellite import Satellite
 from code.Entity import Entity
-from code.const import WIN_WIDTH
+from code.Const import WIN_WIDTH
 
 
 class EntityMediator:
 
     @staticmethod
     def __verify_collision_window(ent: Entity):
-        if isinstance(ent, Enemy):
+        if isinstance(ent, Satellite):
             if ent.rect.right <= 0:
                 ent.health = 0
-        if isinstance(ent, PlayerShot):
+        if isinstance(ent, AlienShot):
             if ent.rect.left >= WIN_WIDTH:
                 ent.health = 0
         if isinstance(ent, EnemyShot):
@@ -23,13 +23,13 @@ class EntityMediator:
     @staticmethod
     def __verify_collision_entity(ent1, ent2):
         valid_interection = False
-        if isinstance(ent1, Enemy) and isinstance(ent2, PlayerShot):
+        if isinstance(ent1, Satellite) and isinstance(ent2, AlienShot):
             valid_interection = True
-        elif isinstance(ent1, PlayerShot) and isinstance(ent2, Enemy):
+        elif isinstance(ent1, AlienShot) and isinstance(ent2, Satellite):
             valid_interection = True
-        elif isinstance(ent1, Player) and isinstance(ent2, EnemyShot):
+        elif isinstance(ent1, Alien) and isinstance(ent2, EnemyShot):
             valid_interection = True
-        elif isinstance(ent1, EnemyShot) and isinstance(ent2, Player):
+        elif isinstance(ent1, EnemyShot) and isinstance(ent2, Alien):
             valid_interection = True
 
         if valid_interection: 
@@ -41,7 +41,7 @@ class EntityMediator:
                 ent2.last_dmg = ent1.name
     
     @staticmethod
-    def __give_score(enemy: Enemy, entity_list: list[Entity]):
+    def __give_score(enemy: Satellite, entity_list: list[Entity]):
         if enemy.last_dmg == 'Player1Shot':
             for ent in entity_list:
                 if ent.name == 'Player1':
@@ -66,6 +66,6 @@ class EntityMediator:
     def verify_health(entity_list: list[Entity]):
         for ent in entity_list:
             if ent.health <= 0:
-                if isinstance(ent, Enemy):
+                if isinstance(ent, Satellite):
                     EntityMediator.__give_score(ent, entity_list)
                 entity_list.remove(ent)

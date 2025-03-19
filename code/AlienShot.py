@@ -1,8 +1,8 @@
 from code.Entity import Entity
-from code.const import ENTITY_SPEED
+from code.Const import ENTITY_SPEED
 
 
-class PlayerShot(Entity):
+class AlienShot(Entity):
 
 
     def __init__(self, name: str, position: tuple):
