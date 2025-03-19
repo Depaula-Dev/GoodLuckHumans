@@ -1,8 +1,8 @@
 import random
 from code.Satellite import Satellite
 from code.Alien import Alien
-from code.Background import Background
 from code.Const import WIN_HEIGHT, WIN_WIDTH
+from code.background import Background
 
 
 class EntityFactory:

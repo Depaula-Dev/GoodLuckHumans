@@ -2,7 +2,6 @@ import random
 from code.AlienShot import AlienShot
 from code.Satellite import Satellite
 from code.Alien import Alien
-from code.Background import Background
 from code.Const import WIN_WIDTH
 
 
