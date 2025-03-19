@@ -28,13 +28,13 @@ ENTITY_SPEED = {
     'Level2Bg3': 3,
     'Level2Bg4': 4,
     'Player1' :3,
-    'Player1Shot' :1,
+    'Player1Shot' :2,
     'Player2' :3, 
     'Player2Shot' :3,
-    'Enemy1': 1,
+    'Enemy1': 5,
     'Enemy1Shot': 5,
-    'Enemy2': 1,
-    'Enemy2Shot': 2
+    'Enemy2': 5,
+    'Enemy2Shot': 2,
 }
 
 ENTITY_HEALTH = {
@@ -110,14 +110,14 @@ ENTITY_SHOT_DELAY = {
     'Player1': 20,
     'Player2': 15,
     'Enemy1': 100,
-    'Enemy2': 200,
+    'Enemy2': 100,
 }
 
 
 # M
-MENU_OPTION = ('NEW GAME 1P',
-               'NEW GAME 2P - COOPERATIVE',
-               'NEW GAME 2P - COMPETITIVE',
+MENU_OPTION = ('New Game 1 PLAYER',
+               'New Game 2 PLAYERS - COOPERATIVE',
+               'New Game 2 PLAYERS - COMPETITIVE',
                'SCORE',
                'EXIT')
 
@@ -134,7 +134,7 @@ PLAYER_KEY_SHOT = {'Player1': pygame.K_m,
                     'Player2': pygame.K_LCTRL}
 
 # S
-SPAWN_TIME = 4000
+SPAWN_TIME = 800
 
 
 

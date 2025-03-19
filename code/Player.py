@@ -31,7 +31,7 @@ class Player(Entity):
 
             pressed_key = pygame.key.get_pressed()
             if pressed_key[PLAYER_KEY_SHOT[self.name]]:
-                return PlayerShot(name=f'{self.name}Shot', position=(self.rect.centerx, self.rect.centery))
+                return PlayerShot(name=f'{self.name}Shot', position=(self.rect.centerx -20, self.rect.centery -30))
             else:
                 return None
             
