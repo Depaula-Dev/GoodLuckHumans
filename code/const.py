@@ -130,7 +130,7 @@ PLAYER_KEY_LEFT = {'Alien1': pygame.K_LEFT,
                    'Alien2': pygame.K_a}
 PLAYER_KEY_RIGHT = {'Alien1': pygame.K_RIGHT,
                     'Alien2': pygame.K_d}
-PLAYER_KEY_SHOT = {'Alien1': pygame.K_m,
+PLAYER_KEY_SHOT = {'Alien1': pygame.K_RCTRL,
                     'Alien2': pygame.K_LCTRL}
 
 # S
