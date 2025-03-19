@@ -1,4 +1,4 @@
-from code.EnemyShot import EnemyShot
+from code.SatelliteShot import SatelliteShot
 from code.Alien import Alien
 from code.AlienShot import AlienShot
 from code.Satellite import Satellite
@@ -16,7 +16,7 @@ class EntityMediator:
         if isinstance(ent, AlienShot):
             if ent.rect.left >= WIN_WIDTH:
                 ent.health = 0
-        if isinstance(ent, EnemyShot):
+        if isinstance(ent, SatelliteShot):
             if ent.rect.right <= 0:
                 ent.health = 0
 
@@ -27,9 +27,9 @@ class EntityMediator:
             valid_interection = True
         elif isinstance(ent1, AlienShot) and isinstance(ent2, Satellite):
             valid_interection = True
-        elif isinstance(ent1, Alien) and isinstance(ent2, EnemyShot):
+        elif isinstance(ent1, Alien) and isinstance(ent2, SatelliteShot):
             valid_interection = True
-        elif isinstance(ent1, EnemyShot) and isinstance(ent2, Alien):
+        elif isinstance(ent1, SatelliteShot) and isinstance(ent2, Alien):
             valid_interection = True
 
         if valid_interection: 
@@ -42,13 +42,13 @@ class EntityMediator:
     
     @staticmethod
     def __give_score(enemy: Satellite, entity_list: list[Entity]):
-        if enemy.last_dmg == 'Player1Shot':
+        if enemy.last_dmg == 'Alien1Shot':
             for ent in entity_list:
-                if ent.name == 'Player1':
+                if ent.name == 'Alien1':
                     ent.score += enemy.score
-        elif enemy.last_dmg == 'Player2Shot':
+        elif enemy.last_dmg == 'Alien2Shot':
             for ent in entity_list:
-                if ent.name == 'Player2':
+                if ent.name == 'Alien2':
                     ent.score += enemy.score
 
 

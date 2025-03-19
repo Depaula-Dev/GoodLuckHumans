@@ -2,7 +2,7 @@ import sys
 import pygame
 from code.Level import Level
 from code.Menu import Menu
-from code.Score import Score
+from code.AlienPoints import AlienPoints
 from code.Const import MENU_OPTION, WIN_HEIGHT, WIN_WIDTH
 
 class Game:
@@ -12,7 +12,7 @@ class Game:
 
     def run(self):
         while True:
-            score = Score(self.window)
+            score = AlienPoints(self.window)
             menu = Menu(self.window)
             menu_return = menu.run()
 

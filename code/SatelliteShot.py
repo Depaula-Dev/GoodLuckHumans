@@ -2,7 +2,7 @@ from code.Entity import Entity
 from code.Const import ENTITY_SPEED
 
 
-class EnemyShot(Entity):
+class SatelliteShot(Entity):
 
 
     def __init__(self, name: str, position: tuple):

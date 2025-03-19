@@ -1,6 +1,6 @@
 
 
-from code.EnemyShot import EnemyShot
+from code.SatelliteShot import SatelliteShot
 from code.Entity import Entity
 from code.Const import ENTITY_SHOT_DELAY, ENTITY_SPEED
 
@@ -18,6 +18,6 @@ class Satellite(Entity):
         self.shot_delay -= 1
         if self.shot_delay == 0:
             self.shot_delay = ENTITY_SHOT_DELAY[self.name]
-            return EnemyShot(name=f'{self.name}Shot', position=(self.rect.centerx, self.rect.centery))
+            return SatelliteShot(name=f'{self.name}Shot', position=(self.rect.centerx, self.rect.centery))
 
 

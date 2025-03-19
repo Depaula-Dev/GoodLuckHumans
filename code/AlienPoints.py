@@ -7,24 +7,24 @@ from code.DBProxy import DBProxy
 from code.Const import COLOR_WHITE, COLOR_YELLOW, MENU_OPTION, SCORE_POS
 
 
-class Score:
+class AlienPoints:
 
     def __init__(self, window: pygame.Surface):
         self.window = window
-        self.surf = pygame.image.load('./assets/ScoreBg.png').convert_alpha()
+        self.surf = pygame.image.load('./assets/AlienPointsBg.png').convert_alpha()
         self.rect = self.surf.get_rect(left=0, top=0)
         pass
 
 
     def save(self, game_mode: str, player_score: list[int]):
-        pygame.mixer_music.load('./assets/Score.mp3')
+        pygame.mixer_music.load('./assets/AlienPoints.mp3')
         pygame.mixer_music.play(-1)
         db_proxy = DBProxy('DBScore')
         name = ''
         while True:
             self.window.blit(source=self.surf, dest=self.rect)
             self.score_text(48, 'YOU WIN!!', COLOR_YELLOW, SCORE_POS['Title'])
-            text = 'Enter Player 1 name (4 characters):'
+            text = 'Enter Alien 1 name (4 characters):'
             score = player_score[0]
             if game_mode == MENU_OPTION[0]:
                 score = player_score[0]
@@ -36,7 +36,7 @@ class Score:
                     score = player_score[0]
                 else:
                     score = player_score[1]
-                    text = 'Enter Player 2 name (4 characters):'
+                    text = 'Enter Alien 2 name (4 characters):'
             self.score_text(20, text, COLOR_WHITE, SCORE_POS['EnterName'])
 
             # Close
@@ -61,11 +61,11 @@ class Score:
 
 
     def show(self):
-        pygame.mixer_music.load('./assets/Score.mp3')
+        pygame.mixer_music.load('./assets/AlienPoints.mp3')
         pygame.mixer_music.play(-1)
         self.window.blit(source=self.surf, dest=self.rect)
-        self.score_text(48, 'TOP 10 SCORE', COLOR_YELLOW, SCORE_POS['Title'])
-        self.score_text(20, 'NAME     SCORE           DATE      ', COLOR_YELLOW, SCORE_POS['Label'])
+        self.score_text(48, 'TOP 10 AlienPoints', COLOR_YELLOW, SCORE_POS['Title'])
+        self.score_text(20, '  Name    AlienPoints           Date      ', COLOR_YELLOW, SCORE_POS['Label'])
         db_proxy = DBProxy('DBScore')
         list_score = db_proxy.retrieve_top10()
         db_proxy.close()
@@ -73,7 +73,7 @@ class Score:
 
         for player_score in list_score:
             id_, name, score, date = player_score
-            self.score_text(20, f'{name}     {int(score):05d}     {date}', COLOR_WHITE,
+            self.score_text(20, f'{name}     {int(score):05d}        {date}', COLOR_WHITE,
                             SCORE_POS[list_score.index(player_score)])
             
         while True:

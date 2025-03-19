@@ -20,11 +20,11 @@ class Level:
         self.game_mode = game_mode # Modo de jogo
         self.entity_list: list[Entity] = []
         self.entity_list.extend(EntityFactory.get_entity(self.name + 'Bg'))
-        player = EntityFactory.get_entity('Player1')
+        player = EntityFactory.get_entity('Alien1')
         player.score = player_score[0]
         self.entity_list.append(player)
         if game_mode in [MENU_OPTION[1], MENU_OPTION[2]]:
-            player = EntityFactory.get_entity('Player2')
+            player = EntityFactory.get_entity('Alien2')
             player.score = player_score[1]
             self.entity_list.append(player)
         pygame.time.set_timer(EVENT_ENEMY, SPAWN_TIME)
@@ -46,10 +46,10 @@ class Level:
                     shot = ent.shot()
                     if shot is not None:
                         self.entity_list.append(shot)
-                if ent.name == 'Player1':
-                    self.level_text(14, f'Player1 - Health: {ent.health} | Score:{ent.score}', COLOR_GREEN, (10, 25))
-                if ent.name == 'Player2':
-                    self.level_text(14, f'Player2 - Health: {ent.health} | Score:{ent.score}', COLOR_CYAN, (10, 45))
+                if ent.name == 'Alien1':
+                    self.level_text(14, f'Alien1 - Health: {ent.health} | Score:{ent.score}', COLOR_GREEN, (10, 25))
+                if ent.name == 'Alien2':
+                    self.level_text(14, f'Alien2 - Health: {ent.health} | Score:{ent.score}', COLOR_CYAN, (10, 45))
 
             # Close
             for event in pygame.event.get():
@@ -57,15 +57,15 @@ class Level:
                     pygame.quit()
                     sys.exit()   
                 if event.type == EVENT_ENEMY:
-                    choice = random.choice(('Enemy1', 'Enemy2'))
+                    choice = random.choice(('Satellite1', 'Satellite2'))
                     self.entity_list.append(EntityFactory.get_entity(choice))
                 if event.type == EVENT_TIMEOUT:
                     self.timeout -= TIMEOUT_STEP
                     if self.timeout == 0:
                         for ent in self.entity_list:
-                            if isinstance(ent, Alien) and ent.name == 'Player1':
+                            if isinstance(ent, Alien) and ent.name == 'Alien1':
                                 player_score[0] = ent.score
-                            if isinstance(ent, Alien) and ent.name == 'Player2':
+                            if isinstance(ent, Alien) and ent.name == 'Alien2':
                                 player_score[1] = ent.score
                         return True
                     
