@@ -3,15 +3,12 @@ from code.Entity import Entity
 from code.AlienShot import AlienShot
 from code.Const import ENTITY_SHOT_DELAY, ENTITY_SPEED, PLAYER_KEY_DOWN, PLAYER_KEY_LEFT, PLAYER_KEY_RIGHT, PLAYER_KEY_SHOT, PLAYER_KEY_UP, WIN_HEIGHT, WIN_WIDTH
 
-
-
 class Alien(Entity):
     def __init__(self, name: str, position: tuple):
         super().__init__(name, position)
         self.shot_delay = ENTITY_SHOT_DELAY[self.name]
 
    
-
     def move(self):
         pressed_key = pygame.key.get_pressed()
         if pressed_key[PLAYER_KEY_UP[self.name]] and self.rect.top > 0:
@@ -33,8 +30,7 @@ class Alien(Entity):
             if pressed_key[PLAYER_KEY_SHOT[self.name]]:
                 return AlienShot(name=f'{self.name}Shot', position=(self.rect.centerx -20, self.rect.centery -30))
             else:
-                return None
-            
+                return None            
         else:
             return None
 

@@ -58,8 +58,6 @@ class AlienPoints:
             pygame.display.flip()
             pass
 
-
-
     def show(self):
         pygame.mixer_music.load('./assets/AlienPoints.mp3')
         pygame.mixer_music.play(-1)

@@ -1,7 +1,6 @@
 from tkinter.font import Font
 from pygame import Rect, Surface
 import pygame.image
-
 from code.Const import COLOR_ORANGE, COLOR_YELLOW, MENU_OPTION, WIN_WIDTH, COLOR_WHITE
 
 
@@ -28,8 +27,7 @@ class Menu:
                 else:
                     self.menu_text(20, MENU_OPTION[i], COLOR_WHITE , ((WIN_WIDTH/2), 200 + 25 * i))
 
-            pygame.display.flip()
-            
+            pygame.display.flip()            
             
         
             # Check for all events
@@ -54,9 +52,7 @@ class Menu:
                         return MENU_OPTION[menu_option]
 
             
-            
-                    
-
+                               
     def menu_text(self, text_size: int, text: str, text_color: tuple, text_center_pos: tuple):
         text_font: Font = pygame.font.SysFont(name="Lucida Sans Typewriter", size=text_size)
         text_surf: Surface = text_font.render(text, True, text_color).convert_alpha()

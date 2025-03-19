@@ -1,19 +1,18 @@
-# C
 import pygame
 
-
+# Colors
 COLOR_ORANGE = (255, 128, 0)
 COLOR_WHITE = (255, 255, 255)
 COLOR_YELLOW = (255, 255, 0)
 COLOR_GREEN = (0, 128, 0)
 COLOR_CYAN = (0, 128, 128)
 
-# E
+# Events
 EVENT_ENEMY = pygame.USEREVENT + 1
 
 EVENT_TIMEOUT = pygame.USEREVENT + 2
 
-
+# Entity Velocity
 ENTITY_SPEED = {
     'Level1Bg0': 0,
     'Level1Bg1': 1,
@@ -114,14 +113,14 @@ ENTITY_SHOT_DELAY = {
 }
 
 
-# M
+# Menu
 MENU_OPTION = ('New Game 1 ALIEN',
                'New Game 2 ALIENS - COOPERATIVE',
                'New Game 2 ALIENS - COMPETITIVE',
                'SCORE',
                'EXIT')
 
-# P
+# Player Controls
 PLAYER_KEY_UP = {'Alien1': pygame.K_UP,
                  'Alien2': pygame.K_w}
 PLAYER_KEY_DOWN = {'Alien1': pygame.K_DOWN,
@@ -133,20 +132,20 @@ PLAYER_KEY_RIGHT = {'Alien1': pygame.K_RIGHT,
 PLAYER_KEY_SHOT = {'Alien1': pygame.K_RCTRL,
                     'Alien2': pygame.K_LCTRL}
 
-# S
+
 SPAWN_TIME = 800
 
 
 
-# T
+# Time Configuration
 TIMEOUT_STEP = 100  # 100ms
 TIMEOUT_LEVEL = 15000  # 20s
 
-# W
+# Window Configuration
 WIN_WIDTH = 576
 WIN_HEIGHT = 324
 
-# S
+# Score Positions
 SCORE_POS = {'Title': (WIN_WIDTH / 2, 50),
              'EnterName': (WIN_WIDTH / 2, 80),
              'Label': (WIN_WIDTH / 2, 90),
