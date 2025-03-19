@@ -36,7 +36,6 @@ class EntityMediator:
 
     @staticmethod
     def verify_collision(entity_list):
-        """Itera sobre a lista de entidades e verifica colisões"""
         for ent in entity_list:
             EntityMediator.__verify_collision_window(ent)
 
@@ -46,5 +45,4 @@ class EntityMediator:
 
     @staticmethod
     def verify_health(entity_list):
-        """Remove entidades cuja saúde chegou a zero"""
         entity_list[:] = [ent for ent in entity_list if ent.health > 0]

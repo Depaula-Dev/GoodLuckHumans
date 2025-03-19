@@ -3,7 +3,6 @@ import sys
 import pygame
 from pygame import Surface, Rect
 from pygame.font import Font
-from code.Satellite import Satellite
 from code.Entity import Entity
 from code.EntityFactory import EntityFactory
 from code.EntityMediator import EntityMediator
@@ -42,7 +41,7 @@ class Level:
             for ent in self.entity_list:
                 self.window.blit(source=ent.surf, dest=ent.rect) 
                 ent.move()
-                if isinstance(ent, (Alien, Satellite)):
+                if isinstance(ent, (Alien)):
                     shot = ent.shot()
                     if shot is not None:
                         self.entity_list.append(shot)
